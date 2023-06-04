@@ -76,6 +76,15 @@ var g1 = Grandparent(name: "Nati", height: 160.9, birthday: "30-08-1998")
 print("\(c1.name), \(c1.height)")
 print("\(c2.name), \(c2.height)")
 print("\(c3.name), \(c3.height)")
-//Grandparent.addGrandchild(c1)
-//Grandparent.addGrandchild(c2)
-//Grandparent.addGrandchild(c3)
+Grandparent.addGrandchild(c1)
+Grandparent.addGrandchild(c2)
+Grandparent.addGrandchild(c3)
+
+extension Date {
+    var bithday: Int { Calendar.current.dateComponents([.year], from: self, to: Date()).year! }
+}
+    
+func countBirthday(birthday: Date){
+     var age = DateComponents(calendar: .current, year: 1998, month: 8, day: 30).date!
+     return age
+}
