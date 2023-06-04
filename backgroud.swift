@@ -14,49 +14,59 @@ class Grandparent: Person {
     var childrenList: [Parent] = []
     var grandchildrenList: [Child]  = []
     
-    init() {
-        self.childrenList = childrenList     
-        self.grandchildrenList = grandchildrenList
+    init(childrenList:[Parent], grandchildrenList: [Child] ) {
         super.init(name: name, height: height, birthday: birthday)
-        }
+        self.childrenList = childrenList    
+        self.grandchildrenList = grandchildrenList    
+    }
     
     func printGrandchildenList(){
         print(childrenList)  
     }
 
-   func printGrandchildrenList(){
+    func printGrandchildrenList(){
         print(grandchildrenList)  
-   }
+    }
     
+    func addChild(child: Parent){
+        childrenList.append(child)
+    }
+
+    func addGrandchild(grandchild: Child){
+        grandchildrenList.append(grandchild)
+    }
 }
 
 class Parent: Grandparent {
-    override init() {
-         super.init
+     init() {
+          super.init(childrenList: childrenList, grandchildrenList: grandchildrenList)
      }
 }
 
 
 class Child: Parent {
-    var grandparentList = [Grandparent]()
-    var parentList = [Parent]()
+    var grandparentsList = [Grandparent]()
+    var parentsList = [Parent]()
    
-    override init() {
-        self.grandparentList = grandparentList     
-        self.parentList = parentList
-        super.init(name: name, height: height, birthday: birthday)
+    init(grandparentsList:[Grandparent], parentsList: [Parent]) {
+        super.init()
+        self.grandparentsList = grandparentsList
+        self.parentsList = parentsList
      }
        
-    func printGrandparentList(){
-        print(grandparentList)     
-
+    func printGrandparentsList(){
+        print(grandparentsList)     
     }
-
-     func printParentList(){
-         print(parentList)     
+    
+    func printParentsList(){
+         print(parentsList)     
    }
-}
+    
+    func addParent(parent: Parent){
+         parentsList.append(parent)
+     }
 
-Person(name: "Nat", height: 160.9, birthday: "30-08-1998")
-Person(name: "Nati", height: 160.9, birthday: "30-08-1998")
-Person(name: "Nati", height: 160.9, birthday: "30-08-1998")
+    func addGrandparent(grandparent: Grandparent){
+         grandparentsList.append(grandparent)
+     }
+}
